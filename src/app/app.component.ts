@@ -11,39 +11,41 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
+  public isDesktop = false;
+
   public appPages = [
     {
-      title: 'Inbox',
-      url: '/folder/Inbox',
-      icon: 'mail'
+      title: 'Home',
+      url: 'home',
+      icon: 'home'
     },
     {
-      title: 'Outbox',
-      url: '/folder/Outbox',
+      title: 'Man',
+      url: 'home',
       icon: 'paper-plane'
     },
     {
-      title: 'Favorites',
-      url: '/folder/Favorites',
+      title: 'Woman',
+      url: 'home',
       icon: 'heart'
     },
     {
-      title: 'Archived',
-      url: '/folder/Archived',
+      title: 'Accessories',
+      url: 'home',
       icon: 'archive'
     },
     {
-      title: 'Trash',
-      url: '/folder/Trash',
+      title: 'Profile',
+      url: 'home',
       icon: 'trash'
     },
     {
-      title: 'Spam',
-      url: '/folder/Spam',
+      title: 'LogOut',
+      url: 'home',
       icon: 'warning'
     }
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+
 
   constructor(
     private platform: Platform,
@@ -61,9 +63,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    const path = window.location.pathname.split('folder/')[1];
-    if (path !== undefined) {
-      this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
-    }
+    console.log(this.platform);
+    this.isDesktop = this.platform.is('desktop');
   }
 }
